@@ -17,5 +17,6 @@ def main():
     plt.imshow(pixels.reshape((height, width, 3)))
     plt.show()
 
+
 if __name__ == "__main__":
     main()
