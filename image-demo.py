@@ -1,19 +1,21 @@
 import numpy
-import matplotlib.pyplot as plt
+from matplotlib import pyplot as plt
 from PIL import Image
 
-thickness = 5
-color = [255, 0, 0]
+color_red = (255, 0, 0)
 
 
 def main():
-    img = Image.open("resource/image.jpg")
+    img = Image.open("image.jpg")
     img.show()
-    img_rgb = img.convert("RGB")
     width, height = img.size
-    pixels = numpy.array(img_rgb.getdata())
+    pixels = numpy.array(img.getdata())
     for i in range(0, width):
-        pixels[i] = color
+        pixels[i] = color_red
+        pixels[width * height - 1 - i] = color_red
+    for i in range(0, height):
+        pixels[width * i] = color_red
+        pixels[width * i + width - 1] = color_red
     plt.imshow(pixels.reshape((height, width, 3)))
     plt.show()
 
